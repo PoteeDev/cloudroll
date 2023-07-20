@@ -7,9 +7,11 @@
 package proto
 
 import (
+	_ "github.com/infobloxopen/protoc-gen-gorm/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 )
@@ -68,6 +70,753 @@ func (x *EchoMessage) GetValue() string {
 	return ""
 }
 
+type TeamCreateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+}
+
+func (x *TeamCreateReq) Reset() {
+	*x = TeamCreateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TeamCreateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamCreateReq) ProtoMessage() {}
+
+func (x *TeamCreateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamCreateReq.ProtoReflect.Descriptor instead.
+func (*TeamCreateReq) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *TeamCreateReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type JoinTeamReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *JoinTeamReq) Reset() {
+	*x = JoinTeamReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *JoinTeamReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JoinTeamReq) ProtoMessage() {}
+
+func (x *JoinTeamReq) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JoinTeamReq.ProtoReflect.Descriptor instead.
+func (*JoinTeamReq) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *JoinTeamReq) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type TeamInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name   string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Invite string `protobuf:"bytes,2,opt,name=invite,proto3" json:"invite,omitempty"`
+}
+
+func (x *TeamInfo) Reset() {
+	*x = TeamInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TeamInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamInfo) ProtoMessage() {}
+
+func (x *TeamInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamInfo.ProtoReflect.Descriptor instead.
+func (*TeamInfo) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *TeamInfo) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TeamInfo) GetInvite() string {
+	if x != nil {
+		return x.Invite
+	}
+	return ""
+}
+
+type Board struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Columns []*Column `protobuf:"bytes,1,rep,name=columns,proto3" json:"columns,omitempty"`
+}
+
+func (x *Board) Reset() {
+	*x = Board{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Board) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Board) ProtoMessage() {}
+
+func (x *Board) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Board.ProtoReflect.Descriptor instead.
+func (*Board) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Board) GetColumns() []*Column {
+	if x != nil {
+		return x.Columns
+	}
+	return nil
+}
+
+type Column struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    string  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name  string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Cards []*Card `protobuf:"bytes,3,rep,name=cards,proto3" json:"cards,omitempty"`
+}
+
+func (x *Column) Reset() {
+	*x = Column{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Column) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Column) ProtoMessage() {}
+
+func (x *Column) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Column.ProtoReflect.Descriptor instead.
+func (*Column) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Column) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Column) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Column) GetCards() []*Card {
+	if x != nil {
+		return x.Cards
+	}
+	return nil
+}
+
+type Card struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id     string       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title  string       `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Labels []*Labels    `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty"`
+	Tasks  []*TeamTasks `protobuf:"bytes,4,rep,name=tasks,proto3" json:"tasks,omitempty"`
+}
+
+func (x *Card) Reset() {
+	*x = Card{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Card) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Card) ProtoMessage() {}
+
+func (x *Card) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Card.ProtoReflect.Descriptor instead.
+func (*Card) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Card) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Card) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Card) GetLabels() []*Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
+func (x *Card) GetTasks() []*TeamTasks {
+	if x != nil {
+		return x.Tasks
+	}
+	return nil
+}
+
+type Labels struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Color string `protobuf:"bytes,2,opt,name=color,proto3" json:"color,omitempty"`
+}
+
+func (x *Labels) Reset() {
+	*x = Labels{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Labels) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Labels) ProtoMessage() {}
+
+func (x *Labels) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Labels.ProtoReflect.Descriptor instead.
+func (*Labels) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Labels) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Labels) GetColor() string {
+	if x != nil {
+		return x.Color
+	}
+	return ""
+}
+
+type TeamTasks struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Info      *Task  `protobuf:"bytes,2,opt,name=info,proto3" json:"info,omitempty"`
+	Completed bool   `protobuf:"varint,3,opt,name=completed,proto3" json:"completed,omitempty"`
+}
+
+func (x *TeamTasks) Reset() {
+	*x = TeamTasks{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TeamTasks) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TeamTasks) ProtoMessage() {}
+
+func (x *TeamTasks) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TeamTasks.ProtoReflect.Descriptor instead.
+func (*TeamTasks) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *TeamTasks) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *TeamTasks) GetInfo() *Task {
+	if x != nil {
+		return x.Info
+	}
+	return nil
+}
+
+func (x *TeamTasks) GetCompleted() bool {
+	if x != nil {
+		return x.Completed
+	}
+	return false
+}
+
+type ScoreboardResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Score []*Score               `protobuf:"bytes,1,rep,name=score,proto3" json:"score,omitempty"`
+	Time  *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+}
+
+func (x *ScoreboardResponse) Reset() {
+	*x = ScoreboardResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ScoreboardResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScoreboardResponse) ProtoMessage() {}
+
+func (x *ScoreboardResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScoreboardResponse.ProtoReflect.Descriptor instead.
+func (*ScoreboardResponse) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ScoreboardResponse) GetScore() []*Score {
+	if x != nil {
+		return x.Score
+	}
+	return nil
+}
+
+func (x *ScoreboardResponse) GetTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Time
+	}
+	return nil
+}
+
+type Score struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    string  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name  string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Score int64   `protobuf:"varint,3,opt,name=score,proto3" json:"score,omitempty"`
+	Tasks []*Task `protobuf:"bytes,4,rep,name=tasks,proto3" json:"tasks,omitempty"`
+}
+
+func (x *Score) Reset() {
+	*x = Score{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Score) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Score) ProtoMessage() {}
+
+func (x *Score) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Score.ProtoReflect.Descriptor instead.
+func (*Score) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Score) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Score) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Score) GetScore() int64 {
+	if x != nil {
+		return x.Score
+	}
+	return 0
+}
+
+func (x *Score) GetTasks() []*Task {
+	if x != nil {
+		return x.Tasks
+	}
+	return nil
+}
+
+type Task struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Points      int64  `protobuf:"varint,4,opt,name=points,proto3" json:"points,omitempty"`
+}
+
+func (x *Task) Reset() {
+	*x = Task{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task) ProtoMessage() {}
+
+func (x *Task) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task.ProtoReflect.Descriptor instead.
+func (*Task) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *Task) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Task) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Task) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Task) GetPoints() int64 {
+	if x != nil {
+		return x.Points
+	}
+	return 0
+}
+
+type Tasks struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Tasks []*Task `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
+}
+
+func (x *Tasks) Reset() {
+	*x = Tasks{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Tasks) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Tasks) ProtoMessage() {}
+
+func (x *Tasks) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Tasks.ProtoReflect.Descriptor instead.
+func (*Tasks) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *Tasks) GetTasks() []*Task {
+	if x != nil {
+		return x.Tasks
+	}
+	return nil
+}
+
+type SubmitRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id   int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Task *Task `protobuf:"bytes,2,opt,name=task,proto3" json:"task,omitempty"`
+}
+
+func (x *SubmitRequest) Reset() {
+	*x = SubmitRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_cloudroll_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SubmitRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitRequest) ProtoMessage() {}
+
+func (x *SubmitRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cloudroll_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubmitRequest.ProtoReflect.Descriptor instead.
+func (*SubmitRequest) Descriptor() ([]byte, []int) {
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *SubmitRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *SubmitRequest) GetTask() *Task {
+	if x != nil {
+		return x.Task
+	}
+	return nil
+}
+
 type Empty struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -77,7 +826,7 @@ type Empty struct {
 func (x *Empty) Reset() {
 	*x = Empty{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_cloudroll_proto_msgTypes[1]
+		mi := &file_proto_cloudroll_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -90,7 +839,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cloudroll_proto_msgTypes[1]
+	mi := &file_proto_cloudroll_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -103,7 +852,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_cloudroll_proto_rawDescGZIP(), []int{1}
+	return file_proto_cloudroll_proto_rawDescGZIP(), []int{14}
 }
 
 var File_proto_cloudroll_proto protoreflect.FileDescriptor
@@ -112,15 +861,107 @@ var file_proto_cloudroll_proto_rawDesc = []byte{
 	0x0a, 0x15, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x72, 0x6f, 0x6c,
 	0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f,
 	0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x23, 0x0a, 0x0b, 0x45, 0x63, 0x68, 0x6f, 0x4d, 0x65, 0x73,
-	0x73, 0x61, 0x67, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d,
-	0x70, 0x74, 0x79, 0x32, 0x42, 0x0a, 0x10, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x72, 0x6f, 0x6c, 0x6c,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x12, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f,
+	0x67, 0x6f, 0x72, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x23, 0x0a, 0x0b, 0x45, 0x63,
+	0x68, 0x6f, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22,
+	0x23, 0x0a, 0x0d, 0x54, 0x65, 0x61, 0x6d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x22, 0x1d, 0x0a, 0x0b, 0x4a, 0x6f, 0x69, 0x6e, 0x54, 0x65, 0x61, 0x6d,
+	0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x02, 0x69, 0x64, 0x22, 0x36, 0x0a, 0x08, 0x54, 0x65, 0x61, 0x6d, 0x49, 0x6e, 0x66, 0x6f, 0x12,
+	0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x69, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x06, 0x69, 0x6e, 0x76, 0x69, 0x74, 0x65, 0x22, 0x32, 0x0a, 0x05, 0x42,
+	0x6f, 0x61, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x07, 0x63, 0x6f, 0x6c, 0x75, 0x6d, 0x6e, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x07, 0x2e, 0x43, 0x6f, 0x6c, 0x75, 0x6d, 0x6e, 0x52, 0x07,
+	0x63, 0x6f, 0x6c, 0x75, 0x6d, 0x6e, 0x73, 0x3a, 0x06, 0xba, 0xb9, 0x19, 0x02, 0x08, 0x01, 0x22,
+	0x49, 0x0a, 0x06, 0x43, 0x6f, 0x6c, 0x75, 0x6d, 0x6e, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a,
+	0x05, 0x63, 0x61, 0x72, 0x64, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x05, 0x2e, 0x43,
+	0x61, 0x72, 0x64, 0x52, 0x05, 0x63, 0x61, 0x72, 0x64, 0x73, 0x22, 0x6f, 0x0a, 0x04, 0x43, 0x61,
+	0x72, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x1f, 0x0a, 0x06, 0x6c, 0x61, 0x62, 0x65,
+	0x6c, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x07, 0x2e, 0x4c, 0x61, 0x62, 0x65, 0x6c,
+	0x73, 0x52, 0x06, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x73, 0x12, 0x20, 0x0a, 0x05, 0x74, 0x61, 0x73,
+	0x6b, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x54,
+	0x61, 0x73, 0x6b, 0x73, 0x52, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x22, 0x32, 0x0a, 0x06, 0x4c,
+	0x61, 0x62, 0x65, 0x6c, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x6f, 0x6c,
+	0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x63, 0x6f, 0x6c, 0x6f, 0x72, 0x22,
+	0x54, 0x0a, 0x09, 0x54, 0x65, 0x61, 0x6d, 0x54, 0x61, 0x73, 0x6b, 0x73, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x04,
+	0x69, 0x6e, 0x66, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x05, 0x2e, 0x54, 0x61, 0x73,
+	0x6b, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6c,
+	0x65, 0x74, 0x65, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70,
+	0x6c, 0x65, 0x74, 0x65, 0x64, 0x22, 0x62, 0x0a, 0x12, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x62, 0x6f,
+	0x61, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1c, 0x0a, 0x05, 0x73,
+	0x63, 0x6f, 0x72, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x06, 0x2e, 0x53, 0x63, 0x6f,
+	0x72, 0x65, 0x52, 0x05, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x2e, 0x0a, 0x04, 0x74, 0x69, 0x6d,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
+	0x61, 0x6d, 0x70, 0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x5e, 0x0a, 0x05, 0x53, 0x63, 0x6f,
+	0x72, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x12, 0x1b, 0x0a, 0x05,
+	0x74, 0x61, 0x73, 0x6b, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x05, 0x2e, 0x54, 0x61,
+	0x73, 0x6b, 0x52, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x22, 0x6c, 0x0a, 0x04, 0x54, 0x61, 0x73,
+	0x6b, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69,
+	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63,
+	0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x70, 0x6f, 0x69, 0x6e, 0x74,
+	0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x73, 0x3a,
+	0x06, 0xba, 0xb9, 0x19, 0x02, 0x08, 0x01, 0x22, 0x24, 0x0a, 0x05, 0x54, 0x61, 0x73, 0x6b, 0x73,
+	0x12, 0x1b, 0x0a, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x05, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x52, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x22, 0x3a, 0x0a,
+	0x0d, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
+	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x19,
+	0x0a, 0x04, 0x74, 0x61, 0x73, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x05, 0x2e, 0x54,
+	0x61, 0x73, 0x6b, 0x52, 0x04, 0x74, 0x61, 0x73, 0x6b, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x32, 0xc9, 0x04, 0x0a, 0x10, 0x43, 0x6c, 0x6f, 0x75, 0x64, 0x72, 0x6f, 0x6c, 0x6c,
 	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x2e, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12,
 	0x06, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0c, 0x2e, 0x45, 0x63, 0x68, 0x6f, 0x4d, 0x65,
 	0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x10, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0a, 0x12, 0x08, 0x2f,
-	0x76, 0x31, 0x2f, 0x70, 0x69, 0x6e, 0x67, 0x42, 0x08, 0x5a, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x76, 0x31, 0x2f, 0x70, 0x69, 0x6e, 0x67, 0x12, 0x43, 0x0a, 0x0a, 0x43, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x54, 0x65, 0x61, 0x6d, 0x12, 0x0e, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x09, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x49, 0x6e, 0x66, 0x6f,
+	0x22, 0x1a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x14, 0x22, 0x0f, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x65,
+	0x61, 0x6d, 0x2f, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x3a, 0x01, 0x2a, 0x12, 0x3f, 0x0a, 0x08,
+	0x4a, 0x6f, 0x69, 0x6e, 0x54, 0x65, 0x61, 0x6d, 0x12, 0x0c, 0x2e, 0x4a, 0x6f, 0x69, 0x6e, 0x54,
+	0x65, 0x61, 0x6d, 0x52, 0x65, 0x71, 0x1a, 0x09, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x49, 0x6e, 0x66,
+	0x6f, 0x22, 0x1a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x14, 0x12, 0x12, 0x2f, 0x76, 0x31, 0x2f, 0x74,
+	0x65, 0x61, 0x6d, 0x2f, 0x6a, 0x6f, 0x69, 0x6e, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x2d, 0x0a,
+	0x07, 0x41, 0x64, 0x64, 0x54, 0x61, 0x73, 0x6b, 0x12, 0x05, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x1a,
+	0x05, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x22, 0x14, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0e, 0x22, 0x09,
+	0x2f, 0x76, 0x31, 0x2f, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0x33, 0x0a, 0x0a,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x61, 0x73, 0x6b, 0x12, 0x05, 0x2e, 0x54, 0x61, 0x73,
+	0x6b, 0x1a, 0x06, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x16, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x10, 0x2a, 0x0e, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x2f, 0x7b, 0x69, 0x64,
+	0x7d, 0x12, 0x2e, 0x0a, 0x09, 0x53, 0x68, 0x6f, 0x77, 0x54, 0x61, 0x73, 0x6b, 0x73, 0x12, 0x06,
+	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x06, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x73, 0x22, 0x11,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0b, 0x12, 0x09, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x61, 0x73, 0x6b,
+	0x73, 0x12, 0x2d, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x06, 0x2e,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x06, 0x2e, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x22, 0x11, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x0b, 0x12, 0x09, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x6f, 0x61, 0x72, 0x64,
+	0x12, 0x33, 0x0a, 0x0b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x12,
+	0x06, 0x2e, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x1a, 0x06, 0x2e, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x22,
+	0x14, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0e, 0x22, 0x09, 0x2f, 0x76, 0x31, 0x2f, 0x62, 0x6f, 0x61,
+	0x72, 0x64, 0x3a, 0x01, 0x2a, 0x12, 0x44, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x53, 0x63, 0x6f, 0x72,
+	0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x06, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x13,
+	0x2e, 0x53, 0x63, 0x6f, 0x72, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x16, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x10, 0x12, 0x0e, 0x2f, 0x76, 0x31,
+	0x2f, 0x73, 0x63, 0x6f, 0x72, 0x65, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x12, 0x41, 0x0a, 0x0a, 0x53,
+	0x75, 0x62, 0x6d, 0x69, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x12, 0x0e, 0x2e, 0x53, 0x75, 0x62, 0x6d,
+	0x69, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x0c, 0x2e, 0x45, 0x63, 0x68, 0x6f,
+	0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x15, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0f, 0x22,
+	0x0a, 0x2f, 0x76, 0x31, 0x2f, 0x73, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x3a, 0x01, 0x2a, 0x42, 0x08,
+	0x5a, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -135,19 +976,61 @@ func file_proto_cloudroll_proto_rawDescGZIP() []byte {
 	return file_proto_cloudroll_proto_rawDescData
 }
 
-var file_proto_cloudroll_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_cloudroll_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_proto_cloudroll_proto_goTypes = []interface{}{
-	(*EchoMessage)(nil), // 0: EchoMessage
-	(*Empty)(nil),       // 1: Empty
+	(*EchoMessage)(nil),           // 0: EchoMessage
+	(*TeamCreateReq)(nil),         // 1: TeamCreateReq
+	(*JoinTeamReq)(nil),           // 2: JoinTeamReq
+	(*TeamInfo)(nil),              // 3: TeamInfo
+	(*Board)(nil),                 // 4: Board
+	(*Column)(nil),                // 5: Column
+	(*Card)(nil),                  // 6: Card
+	(*Labels)(nil),                // 7: Labels
+	(*TeamTasks)(nil),             // 8: TeamTasks
+	(*ScoreboardResponse)(nil),    // 9: ScoreboardResponse
+	(*Score)(nil),                 // 10: Score
+	(*Task)(nil),                  // 11: Task
+	(*Tasks)(nil),                 // 12: Tasks
+	(*SubmitRequest)(nil),         // 13: SubmitRequest
+	(*Empty)(nil),                 // 14: Empty
+	(*timestamppb.Timestamp)(nil), // 15: google.protobuf.Timestamp
 }
 var file_proto_cloudroll_proto_depIdxs = []int32{
-	1, // 0: CloudrollService.Ping:input_type -> Empty
-	0, // 1: CloudrollService.Ping:output_type -> EchoMessage
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	5,  // 0: Board.columns:type_name -> Column
+	6,  // 1: Column.cards:type_name -> Card
+	7,  // 2: Card.labels:type_name -> Labels
+	8,  // 3: Card.tasks:type_name -> TeamTasks
+	11, // 4: TeamTasks.info:type_name -> Task
+	10, // 5: ScoreboardResponse.score:type_name -> Score
+	15, // 6: ScoreboardResponse.time:type_name -> google.protobuf.Timestamp
+	11, // 7: Score.tasks:type_name -> Task
+	11, // 8: Tasks.tasks:type_name -> Task
+	11, // 9: SubmitRequest.task:type_name -> Task
+	14, // 10: CloudrollService.Ping:input_type -> Empty
+	1,  // 11: CloudrollService.CreateTeam:input_type -> TeamCreateReq
+	2,  // 12: CloudrollService.JoinTeam:input_type -> JoinTeamReq
+	11, // 13: CloudrollService.AddTask:input_type -> Task
+	11, // 14: CloudrollService.DeleteTask:input_type -> Task
+	14, // 15: CloudrollService.ShowTasks:input_type -> Empty
+	14, // 16: CloudrollService.GetBoard:input_type -> Empty
+	4,  // 17: CloudrollService.UpdateBoard:input_type -> Board
+	14, // 18: CloudrollService.GetScoreboard:input_type -> Empty
+	13, // 19: CloudrollService.SubmitTask:input_type -> SubmitRequest
+	0,  // 20: CloudrollService.Ping:output_type -> EchoMessage
+	3,  // 21: CloudrollService.CreateTeam:output_type -> TeamInfo
+	3,  // 22: CloudrollService.JoinTeam:output_type -> TeamInfo
+	11, // 23: CloudrollService.AddTask:output_type -> Task
+	14, // 24: CloudrollService.DeleteTask:output_type -> Empty
+	12, // 25: CloudrollService.ShowTasks:output_type -> Tasks
+	4,  // 26: CloudrollService.GetBoard:output_type -> Board
+	4,  // 27: CloudrollService.UpdateBoard:output_type -> Board
+	9,  // 28: CloudrollService.GetScoreboard:output_type -> ScoreboardResponse
+	0,  // 29: CloudrollService.SubmitTask:output_type -> EchoMessage
+	20, // [20:30] is the sub-list for method output_type
+	10, // [10:20] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_proto_cloudroll_proto_init() }
@@ -169,6 +1052,162 @@ func file_proto_cloudroll_proto_init() {
 			}
 		}
 		file_proto_cloudroll_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TeamCreateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*JoinTeamReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TeamInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Board); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Column); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Card); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Labels); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TeamTasks); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ScoreboardResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Score); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Tasks); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SubmitRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_cloudroll_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Empty); i {
 			case 0:
 				return &v.state
@@ -187,7 +1226,7 @@ func file_proto_cloudroll_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_cloudroll_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -23,6 +23,15 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CloudrollServiceClient interface {
 	Ping(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*EchoMessage, error)
+	CreateTeam(ctx context.Context, in *TeamCreateReq, opts ...grpc.CallOption) (*TeamInfo, error)
+	JoinTeam(ctx context.Context, in *JoinTeamReq, opts ...grpc.CallOption) (*TeamInfo, error)
+	AddTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error)
+	DeleteTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Empty, error)
+	ShowTasks(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Tasks, error)
+	GetBoard(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Board, error)
+	UpdateBoard(ctx context.Context, in *Board, opts ...grpc.CallOption) (*Board, error)
+	GetScoreboard(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScoreboardResponse, error)
+	SubmitTask(ctx context.Context, in *SubmitRequest, opts ...grpc.CallOption) (*EchoMessage, error)
 }
 
 type cloudrollServiceClient struct {
@@ -42,11 +51,101 @@ func (c *cloudrollServiceClient) Ping(ctx context.Context, in *Empty, opts ...gr
 	return out, nil
 }
 
+func (c *cloudrollServiceClient) CreateTeam(ctx context.Context, in *TeamCreateReq, opts ...grpc.CallOption) (*TeamInfo, error) {
+	out := new(TeamInfo)
+	err := c.cc.Invoke(ctx, "/CloudrollService/CreateTeam", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) JoinTeam(ctx context.Context, in *JoinTeamReq, opts ...grpc.CallOption) (*TeamInfo, error) {
+	out := new(TeamInfo)
+	err := c.cc.Invoke(ctx, "/CloudrollService/JoinTeam", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) AddTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Task, error) {
+	out := new(Task)
+	err := c.cc.Invoke(ctx, "/CloudrollService/AddTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) DeleteTask(ctx context.Context, in *Task, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/CloudrollService/DeleteTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) ShowTasks(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Tasks, error) {
+	out := new(Tasks)
+	err := c.cc.Invoke(ctx, "/CloudrollService/ShowTasks", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) GetBoard(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Board, error) {
+	out := new(Board)
+	err := c.cc.Invoke(ctx, "/CloudrollService/GetBoard", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) UpdateBoard(ctx context.Context, in *Board, opts ...grpc.CallOption) (*Board, error) {
+	out := new(Board)
+	err := c.cc.Invoke(ctx, "/CloudrollService/UpdateBoard", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) GetScoreboard(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScoreboardResponse, error) {
+	out := new(ScoreboardResponse)
+	err := c.cc.Invoke(ctx, "/CloudrollService/GetScoreboard", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cloudrollServiceClient) SubmitTask(ctx context.Context, in *SubmitRequest, opts ...grpc.CallOption) (*EchoMessage, error) {
+	out := new(EchoMessage)
+	err := c.cc.Invoke(ctx, "/CloudrollService/SubmitTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CloudrollServiceServer is the server API for CloudrollService service.
 // All implementations must embed UnimplementedCloudrollServiceServer
 // for forward compatibility
 type CloudrollServiceServer interface {
 	Ping(context.Context, *Empty) (*EchoMessage, error)
+	CreateTeam(context.Context, *TeamCreateReq) (*TeamInfo, error)
+	JoinTeam(context.Context, *JoinTeamReq) (*TeamInfo, error)
+	AddTask(context.Context, *Task) (*Task, error)
+	DeleteTask(context.Context, *Task) (*Empty, error)
+	ShowTasks(context.Context, *Empty) (*Tasks, error)
+	GetBoard(context.Context, *Empty) (*Board, error)
+	UpdateBoard(context.Context, *Board) (*Board, error)
+	GetScoreboard(context.Context, *Empty) (*ScoreboardResponse, error)
+	SubmitTask(context.Context, *SubmitRequest) (*EchoMessage, error)
 	mustEmbedUnimplementedCloudrollServiceServer()
 }
 
@@ -56,6 +155,33 @@ type UnimplementedCloudrollServiceServer struct {
 
 func (UnimplementedCloudrollServiceServer) Ping(context.Context, *Empty) (*EchoMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (UnimplementedCloudrollServiceServer) CreateTeam(context.Context, *TeamCreateReq) (*TeamInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTeam not implemented")
+}
+func (UnimplementedCloudrollServiceServer) JoinTeam(context.Context, *JoinTeamReq) (*TeamInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method JoinTeam not implemented")
+}
+func (UnimplementedCloudrollServiceServer) AddTask(context.Context, *Task) (*Task, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTask not implemented")
+}
+func (UnimplementedCloudrollServiceServer) DeleteTask(context.Context, *Task) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
+}
+func (UnimplementedCloudrollServiceServer) ShowTasks(context.Context, *Empty) (*Tasks, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ShowTasks not implemented")
+}
+func (UnimplementedCloudrollServiceServer) GetBoard(context.Context, *Empty) (*Board, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBoard not implemented")
+}
+func (UnimplementedCloudrollServiceServer) UpdateBoard(context.Context, *Board) (*Board, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateBoard not implemented")
+}
+func (UnimplementedCloudrollServiceServer) GetScoreboard(context.Context, *Empty) (*ScoreboardResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetScoreboard not implemented")
+}
+func (UnimplementedCloudrollServiceServer) SubmitTask(context.Context, *SubmitRequest) (*EchoMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitTask not implemented")
 }
 func (UnimplementedCloudrollServiceServer) mustEmbedUnimplementedCloudrollServiceServer() {}
 
@@ -88,6 +214,168 @@ func _CloudrollService_Ping_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CloudrollService_CreateTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TeamCreateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).CreateTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/CreateTeam",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).CreateTeam(ctx, req.(*TeamCreateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_JoinTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JoinTeamReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).JoinTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/JoinTeam",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).JoinTeam(ctx, req.(*JoinTeamReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_AddTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Task)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).AddTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/AddTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).AddTask(ctx, req.(*Task))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_DeleteTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Task)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).DeleteTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/DeleteTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).DeleteTask(ctx, req.(*Task))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_ShowTasks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).ShowTasks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/ShowTasks",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).ShowTasks(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_GetBoard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).GetBoard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/GetBoard",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).GetBoard(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_UpdateBoard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Board)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).UpdateBoard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/UpdateBoard",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).UpdateBoard(ctx, req.(*Board))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_GetScoreboard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).GetScoreboard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/GetScoreboard",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).GetScoreboard(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CloudrollService_SubmitTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CloudrollServiceServer).SubmitTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/CloudrollService/SubmitTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CloudrollServiceServer).SubmitTask(ctx, req.(*SubmitRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CloudrollService_ServiceDesc is the grpc.ServiceDesc for CloudrollService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -98,6 +386,42 @@ var CloudrollService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Ping",
 			Handler:    _CloudrollService_Ping_Handler,
+		},
+		{
+			MethodName: "CreateTeam",
+			Handler:    _CloudrollService_CreateTeam_Handler,
+		},
+		{
+			MethodName: "JoinTeam",
+			Handler:    _CloudrollService_JoinTeam_Handler,
+		},
+		{
+			MethodName: "AddTask",
+			Handler:    _CloudrollService_AddTask_Handler,
+		},
+		{
+			MethodName: "DeleteTask",
+			Handler:    _CloudrollService_DeleteTask_Handler,
+		},
+		{
+			MethodName: "ShowTasks",
+			Handler:    _CloudrollService_ShowTasks_Handler,
+		},
+		{
+			MethodName: "GetBoard",
+			Handler:    _CloudrollService_GetBoard_Handler,
+		},
+		{
+			MethodName: "UpdateBoard",
+			Handler:    _CloudrollService_UpdateBoard_Handler,
+		},
+		{
+			MethodName: "GetScoreboard",
+			Handler:    _CloudrollService_GetScoreboard_Handler,
+		},
+		{
+			MethodName: "SubmitTask",
+			Handler:    _CloudrollService_SubmitTask_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

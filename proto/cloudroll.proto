@@ -2,6 +2,8 @@ syntax = "proto3";
 option go_package="proto/";
 
 import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "options/gorm.proto";
 
 service CloudrollService {
     rpc Ping(Empty) returns (EchoMessage) {
@@ -9,10 +11,131 @@ service CloudrollService {
             get: "/v1/ping"
         };
     }
+
+    rpc CreateTeam(TeamCreateReq) returns (TeamInfo){
+        option (google.api.http) = {
+            post: "/v1/team/create"
+            body: "*"
+        };
+    }
+    rpc JoinTeam(JoinTeamReq) returns (TeamInfo){
+        option (google.api.http) = {
+            get: "/v1/team/join/{id}"
+        };
+    }
+    rpc AddTask(Task) returns (Task){
+        option (google.api.http) = {
+            post: "/v1/tasks"
+            body: "*"
+        };
+    }
+    rpc DeleteTask(Task) returns (Empty){
+        option (google.api.http) = {
+            delete: "/v1/tasks/{id}"
+        };
+    }
+    rpc GetTasks(Empty) returns (Tasks){
+        option (google.api.http) = {
+            get: "/v1/tasks"
+        };
+    }
+    rpc GetBoard(Empty) returns (Board){
+        option (google.api.http) = {
+            get: "/v1/board"
+        };
+    }
+    rpc UpdateBoard(Board) returns (Board){
+        option (google.api.http) = {
+            post: "/v1/board"
+            body: "*"
+        };
+    }
+    rpc GetScoreboard(Empty) returns (ScoreboardResponse){
+        option (google.api.http) = {
+            get: "/v1/scoreboard"
+        };
+    }
+    rpc SubmitTask(SubmitRequest) returns (EchoMessage){
+        option (google.api.http) = {
+            post: "/v1/submit"
+            body: "*"
+        };
+    }
 }
   
 message EchoMessage {
     string value = 1;
+}
+
+message TeamCreateReq {
+    string name = 1;
+}
+
+message JoinTeamReq {
+    string id = 1;
+}
+
+message TeamInfo {
+    string name = 1;
+    string invite = 2;
+}
+
+message Board {
+    option (gorm.opts).ormable = true;
+    repeated Column columns = 1;
+}
+
+message Column {
+    string id = 1;
+    string name = 2;
+    repeated Card cards = 3; 
+}
+
+message Card {
+    string id = 1;
+    string title = 2;
+    repeated Labels labels = 3;
+    repeated TeamTasks tasks = 4;
+}
+
+message Labels {
+    string name = 1;
+    string color = 2;
+}
+
+message TeamTasks {
+    string id = 1;
+    Task info = 2;
+    bool completed = 3;
+}
+
+message ScoreboardResponse {
+    repeated Score score = 1;
+    google.protobuf.Timestamp time = 2;
+}
+
+message Score {
+    string id  = 1;
+    string name  = 2;
+    int64 score  = 3;
+    repeated Task tasks = 4;
+}
+
+message Task {
+    option (gorm.opts).ormable = true;
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    int64 points = 4;
+}
+
+message Tasks {
+    repeated Task tasks = 1;
+}
+
+message SubmitRequest {
+    int64 id = 1;
+    Task task = 2;
 }
 
 message Empty {

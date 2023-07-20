@@ -6,3 +6,16 @@ services:
     image: explabs/cloudroll
     ports:
       - 8080:8080
+  crdb:
+    restart: 'always'
+    image: 'cockroachdb/cockroach:v22.2.2'
+    command: 'start-single-node --insecure'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health?ready=1"]
+      interval: '10s'
+      timeout: '30s'
+      retries: 5
+      start_period: '20s'
+    ports:
+      - '8081:8080'
+      - '26258:26257'

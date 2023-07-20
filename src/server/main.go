@@ -3,12 +3,20 @@ package server
 import (
 	"context"
 	"fmt"
+	"log"
 	"net"
+	"os"
 
 	proto "github.com/PoteeDev/cloudroll/proto"
 	"github.com/PoteeDev/cloudroll/src/interceptors"
+	grpcmw "github.com/zitadel/zitadel-go/v2/pkg/api/middleware/grpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+)
+
+var (
+	keyPath = os.Getenv("KEY")
+	issuer  = os.Getenv("ISSUER")
 )
 
 // Run starts the example gRPC service.
@@ -24,11 +32,18 @@ func Run(ctx context.Context, network, address string) error {
 			fmt.Printf("Failed to close %s %s: %v\n", network, address, err)
 		}
 	}()
+	// shutdown opentelemetry exporter
+	defer func() { _ = interceptors.Exporter.Shutdown(context.Background()) }()
 
+	authIntrospector, err := grpcmw.NewIntrospectionInterceptor(issuer, keyPath)
+	if err != nil {
+		log.Fatalln("oauth error:", err.Error())
+	}
 	s := grpc.NewServer(
 		grpc.ChainUnaryInterceptor(
+			interceptors.OpenTelemetryInterceptor(),
 			interceptors.PrometheusIntercepotor(),
-			interceptors.AuthInterceptor(),
+			authIntrospector.Unary(),
 		),
 	)
 	interceptors.SrvMetrics.InitializeMetrics(s)

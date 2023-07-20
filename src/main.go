@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	serverAddr  = flag.String("serverAddr", ":9090", "endpoint of the gRPC server")
-	gatewayAddr = flag.String("gatewayAddr", ":8080", "endpoint of the gRPC gateway")
+	serverAddr  = flag.String("serverAddr", ":9000", "endpoint of the gRPC server")
+	gatewayAddr = flag.String("gatewayAddr", ":8000", "endpoint of the gRPC gateway")
 	network     = flag.String("network", "tcp", "a valid network type which is consistent to -addr")
 )
 
